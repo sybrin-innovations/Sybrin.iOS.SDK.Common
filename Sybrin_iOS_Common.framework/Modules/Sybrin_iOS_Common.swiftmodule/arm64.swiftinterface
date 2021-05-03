@@ -136,6 +136,12 @@ extension BigInt {
   public static func >> <Other>(lhs: Sybrin_iOS_Common.BigInt, rhs: Other) -> Sybrin_iOS_Common.BigInt where Other : Swift.BinaryInteger
   public static func >>= <Other>(lhs: inout Sybrin_iOS_Common.BigInt, rhs: Other) where Other : Swift.BinaryInteger
 }
+extension StringProtocol {
+  public func index(from: Swift.Int) -> Self.Index
+  public func substring(from: Swift.Int) -> Swift.String
+  public func substring(to: Swift.Int) -> Swift.String
+  public func substring(with r: Swift.Range<Swift.Int>) -> Swift.String
+}
 extension UIDeviceOrientation {
   public var stringValue: Swift.String {
     get
@@ -368,10 +374,6 @@ public struct BigInt : Swift.SignedInteger {
 extension String {
   public func log(_ level: Sybrin_iOS_Common.LogLevel, fromClass className: Swift.String = #file, inFunction functionName: Swift.String = #function, onLine lineNumber: Swift.Int = #line)
   public func showToast(on view: UIKit.UIView, with options: Sybrin_iOS_Common.ToastOptions = ToastOptions())
-  public func index(from: Swift.Int) -> Swift.String.Index
-  public func substring(from: Swift.Int) -> Swift.String
-  public func substring(to: Swift.Int) -> Swift.String
-  public func substring(with r: Swift.Range<Swift.Int>) -> Swift.String
   public func stringToDate(withFormat format: Swift.String = "yyyy-MM-dd") -> Foundation.Date?
 }
 extension BigUInt : Swift.Comparable {
