@@ -264,8 +264,8 @@ final public class LicenseHandler {
   }
   public init()
   final public func initialize(with key: Swift.String) -> Swift.Result<Swift.Bool, Sybrin_iOS_Common.LicenseError>
-  final public func validateLicense() -> Swift.Result<Swift.Bool, Sybrin_iOS_Common.LicenseError>
-  final public func updateCount() -> Swift.Result<Swift.Bool, Sybrin_iOS_Common.LicenseError>
+  final public func validateLicense(forceOnlineValidation: Swift.Bool = false) -> Swift.Result<Swift.Bool, Sybrin_iOS_Common.LicenseError>
+  final public func updateCount(for feature: Swift.String = "") -> Swift.Result<Swift.Bool, Sybrin_iOS_Common.LicenseError>
   @objc deinit
 }
 extension AVCaptureDevice.Position {
