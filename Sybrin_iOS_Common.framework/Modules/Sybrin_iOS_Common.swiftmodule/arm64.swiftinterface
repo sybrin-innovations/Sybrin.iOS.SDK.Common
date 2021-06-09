@@ -179,7 +179,7 @@ public protocol CommonUIDelegate : AnyObject {
   func handleBackButtonPressed()
 }
 extension Date {
-  public func dateToString(withFormat format: Swift.String = "yyyy-MM-dd") -> Swift.String
+  public func dateToString(withFormat format: Swift.String = "yyyy-MM-dd", timezone: Foundation.TimeZone? = nil) -> Swift.String
 }
 extension NSRegularExpression {
   convenience public init(_ pattern: Swift.String)
