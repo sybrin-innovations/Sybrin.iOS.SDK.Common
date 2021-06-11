@@ -175,6 +175,12 @@ extension BigUInt {
   public static func randomInteger(withExactWidth width: Swift.Int) -> Sybrin_iOS_Common.BigUInt
   public static func randomInteger(lessThan limit: Sybrin_iOS_Common.BigUInt) -> Sybrin_iOS_Common.BigUInt
 }
+public struct Environment : Swift.Codable {
+  public var licenseURL: Swift.String?
+  public init()
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
 public protocol CommonUIDelegate : AnyObject {
   func handleBackButtonPressed()
 }
@@ -667,6 +673,7 @@ public protocol SybrinCommonConfiguration : AnyObject {
   var overlayBlurStyle: UIKit.UIBlurEffect.Style { get set }
   var overlayBlurIntensity: CoreGraphics.CGFloat { get set }
   var cameraPosition: AVFoundation.AVCaptureDevice.Position { get set }
+  var environmentKey: Swift.String { get set }
 }
 extension BigUInt {
   public func squareRoot() -> Sybrin_iOS_Common.BigUInt
