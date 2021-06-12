@@ -570,9 +570,9 @@ public struct CameraOptions {
     public func hash(into hasher: inout Swift.Hasher)
   }
   public var minimumResolution: CoreGraphics.CGSize
-  public var maximumResolution: CoreGraphics.CGSize
+  public var maximumResolution: CoreGraphics.CGSize?
   public var minimumFramesPerSecond: Swift.Double
-  public var maximumFramesPerSecond: Swift.Double
+  public var maximumFramesPerSecond: Swift.Float64?
   public var include16by9AspectRatios: Swift.Bool
   public var include4by3AspectRatios: Swift.Bool
   public var includeOtherAspectRatios: Swift.Bool
