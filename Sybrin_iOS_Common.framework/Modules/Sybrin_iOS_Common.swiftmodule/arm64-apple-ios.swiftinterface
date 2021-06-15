@@ -70,8 +70,7 @@ public struct UIUtilities {
 public enum LicenseSDKType : Swift.Int, Swift.Encodable {
   case Identity
   case Biometrics
-  case Decipher
-  case Digitise
+  case WebAPI
   public typealias RawValue = Swift.Int
   public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
@@ -176,7 +175,12 @@ extension BigUInt {
   public static func randomInteger(lessThan limit: Sybrin_iOS_Common.BigUInt) -> Sybrin_iOS_Common.BigUInt
 }
 public struct Environment : Swift.Codable {
-  public var licenseURL: Swift.String?
+  public var licenseLegacyURL: Swift.String?
+  public var licenseAuthorizeUsername: Swift.String?
+  public var licenseAuthorizeAPIKey: Swift.String?
+  public var licenseAuthorizeURL: Swift.String?
+  public var licenseValidateURL: Swift.String?
+  public var licenseUpdateCountURL: Swift.String?
   public init()
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
@@ -271,7 +275,7 @@ final public class LicenseHandler {
   public init()
   final public func initialize(with key: Swift.String) -> Swift.Result<Swift.Bool, Sybrin_iOS_Common.LicenseError>
   final public func validateLicense(forceOnlineValidation: Swift.Bool = false) -> Swift.Result<Swift.Bool, Sybrin_iOS_Common.LicenseError>
-  final public func updateCount(for feature: Swift.String = "") -> Swift.Result<Swift.Bool, Sybrin_iOS_Common.LicenseError>
+  final public func updateCount(f feature: Swift.String = "", pM phoneModel: Swift.String = UIDevice.modelName, oV osVersion: Swift.String = UIDevice.current.systemVersion) -> Swift.Result<Swift.Bool, Sybrin_iOS_Common.LicenseError>
   @objc deinit
 }
 extension AVCaptureDevice.Position {
@@ -390,6 +394,9 @@ extension BigUInt : Swift.Comparable {
 extension BigInt {
   public static func == (a: Sybrin_iOS_Common.BigInt, b: Sybrin_iOS_Common.BigInt) -> Swift.Bool
   public static func < (a: Sybrin_iOS_Common.BigInt, b: Sybrin_iOS_Common.BigInt) -> Swift.Bool
+}
+extension UIDevice {
+  public static let modelName: Swift.String
 }
 extension BigUInt {
   public init?<T>(exactly source: T) where T : Swift.BinaryInteger
