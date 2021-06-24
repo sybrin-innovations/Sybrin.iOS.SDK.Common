@@ -423,6 +423,9 @@ public enum LicenseError : Swift.Error {
   case DecodingKeyFailed
   case InternalError
   case Undetermined
+  public var message: Swift.String {
+    get
+  }
 }
 extension BigUInt {
   public static func + (a: Sybrin_iOS_Common.BigUInt, b: Sybrin_iOS_Common.BigUInt) -> Sybrin_iOS_Common.BigUInt
