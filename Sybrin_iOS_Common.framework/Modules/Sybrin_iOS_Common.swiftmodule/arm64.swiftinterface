@@ -77,17 +77,6 @@ public enum LicenseSDKType : Swift.Int, Swift.Encodable {
     get
   }
 }
-public enum LicenseFileError : Swift.String, Swift.Error {
-  case NotInitialized
-  case AlreadyInitialized
-  case DecodingFileFailed
-  case InternalError
-  public typealias RawValue = Swift.String
-  public init?(rawValue: Swift.String)
-  public var rawValue: Swift.String {
-    get
-  }
-}
 extension BigUInt {
   public func quotientAndRemainder(dividingBy y: Sybrin_iOS_Common.BigUInt) -> (quotient: Sybrin_iOS_Common.BigUInt, remainder: Sybrin_iOS_Common.BigUInt)
   public static func / (x: Sybrin_iOS_Common.BigUInt, y: Sybrin_iOS_Common.BigUInt) -> Sybrin_iOS_Common.BigUInt
@@ -420,24 +409,20 @@ extension BigInt : Swift.ExpressibleByIntegerLiteral {
   public init(integerLiteral value: Swift.Int64)
   public typealias IntegerLiteralType = Swift.Int64
 }
-public enum LicenseError : Swift.String, Swift.Error {
+public enum LicenseError : Swift.Error {
   case NotStarted
   case Expired
+  case Suspended
   case IncorrectSDK
   case IncorrectPlatform
+  case MaxUsageCountReached
   case NoInternet
-  case FailedInternet
+  case FailedInternet(reason: Swift.String?)
   case NotInitialized
   case AlreadyInitialized
   case DecodingKeyFailed
-  case KeyNotSet
   case InternalError
   case Undetermined
-  public typealias RawValue = Swift.String
-  public init?(rawValue: Swift.String)
-  public var rawValue: Swift.String {
-    get
-  }
 }
 extension BigUInt {
   public static func + (a: Sybrin_iOS_Common.BigUInt, b: Sybrin_iOS_Common.BigUInt) -> Sybrin_iOS_Common.BigUInt
@@ -730,14 +715,8 @@ extension Sybrin_iOS_Common.CameraOutputType : Swift.Hashable {}
 extension Sybrin_iOS_Common.LicenseSDKType : Swift.Equatable {}
 extension Sybrin_iOS_Common.LicenseSDKType : Swift.Hashable {}
 extension Sybrin_iOS_Common.LicenseSDKType : Swift.RawRepresentable {}
-extension Sybrin_iOS_Common.LicenseFileError : Swift.Equatable {}
-extension Sybrin_iOS_Common.LicenseFileError : Swift.Hashable {}
-extension Sybrin_iOS_Common.LicenseFileError : Swift.RawRepresentable {}
 extension Sybrin_iOS_Common.BigInt.Sign : Swift.Equatable {}
 extension Sybrin_iOS_Common.BigInt.Sign : Swift.Hashable {}
-extension Sybrin_iOS_Common.LicenseError : Swift.Equatable {}
-extension Sybrin_iOS_Common.LicenseError : Swift.Hashable {}
-extension Sybrin_iOS_Common.LicenseError : Swift.RawRepresentable {}
 extension Sybrin_iOS_Common.LogLevel : Swift.Equatable {}
 extension Sybrin_iOS_Common.LogLevel : Swift.Hashable {}
 extension Sybrin_iOS_Common.LogLevel : Swift.RawRepresentable {}
