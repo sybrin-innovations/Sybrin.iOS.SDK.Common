@@ -128,7 +128,14 @@ extension StringProtocol {
   public func index(from: Swift.Int) -> Self.Index
   public func substring(from: Swift.Int) -> Swift.String
   public func substring(to: Swift.Int) -> Swift.String
+  public func substring(from: Swift.Int, to: Swift.Int) -> Swift.String
+  public func substring(from: Swift.Int, length: Swift.Int) -> Swift.String
+  public func substring(from: Self.Index, to: Self.Index) -> Swift.String
   public func substring(with r: Swift.Range<Swift.Int>) -> Swift.String
+  public func indexOf(str: Swift.String) -> Swift.Int?
+  public func indexOf(char: Swift.Character) -> Swift.Int?
+  public func indexLower<S>(of string: S, options: Swift.String.CompareOptions = []) -> Self.Index? where S : Swift.StringProtocol
+  public func indexUpper<S>(of string: S, options: Swift.String.CompareOptions = []) -> Self.Index? where S : Swift.StringProtocol
 }
 extension UIDeviceOrientation {
   public var stringValue: Swift.String {
