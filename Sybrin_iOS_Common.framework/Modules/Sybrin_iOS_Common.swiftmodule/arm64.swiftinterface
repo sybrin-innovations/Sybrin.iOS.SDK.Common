@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-compiler-version: Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)
 // swift-module-flags: -target arm64-apple-ios12.4 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Sybrin_iOS_Common
 import AVFoundation
 import CommonCrypto
@@ -20,10 +20,10 @@ public enum CameraOutputType {
   case CMSampleBuffer
   case Unspecified
   public static func == (a: Sybrin_iOS_Common.CameraOutputType, b: Sybrin_iOS_Common.CameraOutputType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
 }
 @_hasMissingDesignatedInitializers final public class CommonUI {
   public static var labelStartPoint: CoreGraphics.CGPoint {
@@ -71,8 +71,8 @@ public enum LicenseSDKType : Swift.Int, Swift.Encodable {
   case Identity
   case Biometrics
   case WebAPI
-  public typealias RawValue = Swift.Int
   public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
   }
@@ -178,8 +178,8 @@ public struct Environment : Swift.Codable {
   public var licenseValidateURL: Swift.String?
   public var licenseUpdateCountURL: Swift.String?
   public init()
-  public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 public protocol CommonUIDelegate : AnyObject {
   func handleBackButtonPressed()
@@ -317,9 +317,9 @@ extension BigUInt {
     }
     public typealias Element = Sybrin_iOS_Common.BigUInt.Word
     public typealias Index = Swift.Int
+    public typealias Indices = Swift.Range<Swift.Int>
     public typealias Iterator = Swift.IndexingIterator<Sybrin_iOS_Common.BigUInt.Words>
     public typealias SubSequence = Swift.Slice<Sybrin_iOS_Common.BigUInt.Words>
-    public typealias Indices = Swift.Range<Swift.Int>
   }
   public var words: Sybrin_iOS_Common.BigUInt.Words {
     get
@@ -359,10 +359,10 @@ public struct BigInt : Swift.SignedInteger {
     case plus
     case minus
     public static func == (a: Sybrin_iOS_Common.BigInt.Sign, b: Sybrin_iOS_Common.BigInt.Sign) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public typealias Magnitude = Sybrin_iOS_Common.BigUInt
   public typealias Word = Sybrin_iOS_Common.BigUInt.Word
@@ -460,8 +460,8 @@ extension AVCaptureVideoOrientation {
   public var description: Swift.String {
     get
   }
-  public typealias RawValue = Swift.Int
   public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
   }
@@ -566,10 +566,10 @@ public struct CameraOptions {
   public enum Preference {
     case Resolution, FPS
     public static func == (a: Sybrin_iOS_Common.CameraOptions.Preference, b: Sybrin_iOS_Common.CameraOptions.Preference) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public var minimumResolution: CoreGraphics.CGSize
   public var maximumResolution: CoreGraphics.CGSize?
@@ -612,16 +612,16 @@ extension BigUInt : Swift.ExpressibleByStringLiteral {
   public init(unicodeScalarLiteral value: Swift.UnicodeScalar)
   public init(extendedGraphemeClusterLiteral value: Swift.String)
   public init(stringLiteral value: Swift.StringLiteralType)
-  public typealias StringLiteralType = Swift.StringLiteralType
   public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias StringLiteralType = Swift.StringLiteralType
   public typealias UnicodeScalarLiteralType = Swift.UnicodeScalar
 }
 extension BigInt : Swift.ExpressibleByStringLiteral {
   public init(unicodeScalarLiteral value: Swift.UnicodeScalar)
   public init(extendedGraphemeClusterLiteral value: Swift.String)
   public init(stringLiteral value: Swift.StringLiteralType)
-  public typealias StringLiteralType = Swift.StringLiteralType
   public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias StringLiteralType = Swift.StringLiteralType
   public typealias UnicodeScalarLiteralType = Swift.UnicodeScalar
 }
 extension BigUInt : Swift.CustomStringConvertible {
@@ -659,8 +659,8 @@ public enum NetworkError : Swift.String, Swift.Error {
   case NilData
   case Parsing
   case Undetermined
-  public typealias RawValue = Swift.String
   public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
