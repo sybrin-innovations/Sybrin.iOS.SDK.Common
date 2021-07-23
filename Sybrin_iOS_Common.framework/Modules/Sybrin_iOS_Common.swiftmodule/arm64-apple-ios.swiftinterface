@@ -250,6 +250,9 @@ extension BigInt {
     get
     set
   }
+  final public var isCameraBusy: Swift.Bool {
+    get
+  }
   public init?(_ view: UIKit.UIView, cameraPosition: AVFoundation.AVCaptureDevice.Position = .back, cameraOptions: Sybrin_iOS_Common.CameraOptions = CameraOptions())
   @objc deinit
   final public func cameraTakePicture(_ flashMode: AVFoundation.AVCaptureDevice.FlashMode = .auto)
