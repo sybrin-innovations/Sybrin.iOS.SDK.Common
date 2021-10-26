@@ -44,7 +44,7 @@ public enum CameraOutputType {
   public static func flashBorders(withColor color: UIKit.UIColor, animationTimeSeconds: Swift.Double = 1, repeatCount: Swift.Float = 3)
   public static func flashOverlay(withColor color: UIKit.UIColor, animationTimeSeconds: Swift.Double = 1, repeatCount: Swift.Float = 3)
   public static func updateLabelText(to labelText: Swift.String, animationColor: UIKit.UIColor? = .green, forceAnimation: Swift.Bool = false)
-  public static func updateSubLabelText(to labelText: Swift.String, animationColor: UIKit.UIColor? = .green, forceAnimation: Swift.Bool = false)
+  public static func updateSubLabelText(view: UIKit.UIView? = nil, to labelText: Swift.String, animationColor: UIKit.UIColor? = .green, forceAnimation: Swift.Bool = false)
   public static func addFlashLightButton(to view: UIKit.UIView?)
   public static func addBackButton(to view: UIKit.UIView?)
   public static func addScanTitle(view: UIKit.UIView?, yMargin: Swift.Float = 45)
