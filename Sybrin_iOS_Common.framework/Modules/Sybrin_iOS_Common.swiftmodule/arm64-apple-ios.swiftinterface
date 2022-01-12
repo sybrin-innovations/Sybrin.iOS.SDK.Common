@@ -38,7 +38,6 @@ public enum CameraOutputType {
   weak public static var delegate: Sybrin_iOS_Common.CommonUIDelegate?
   public static func addOverlay(to view: UIKit.UIView)
   public static func removeOverlay()
-  public static func loadingAnim(to view: UIKit.UIView?)
   public static func addRectCutouts(addBorder: Swift.Bool = false, withRoundedCorners: (width: CoreGraphics.CGFloat, height: CoreGraphics.CGFloat)? = nil, _ cutoutViews: UIKit.UIView...)
   public static func addOvalCutouts(addBorder: Swift.Bool = false, _ cutoutViews: UIKit.UIView...)
   public static func addOutsideCornerBorders(to view: UIKit.UIView)
