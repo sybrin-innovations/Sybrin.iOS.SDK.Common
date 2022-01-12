@@ -39,6 +39,7 @@ public enum CameraOutputType {
   public static func addOverlay(to view: UIKit.UIView)
   public static func removeOverlay()
   public static func loadingAnim(to view: UIKit.UIView?)
+  public static func loadingAnimStop()
   public static func addRectCutouts(addBorder: Swift.Bool = false, withRoundedCorners: (width: CoreGraphics.CGFloat, height: CoreGraphics.CGFloat)? = nil, _ cutoutViews: UIKit.UIView...)
   public static func addOvalCutouts(addBorder: Swift.Bool = false, _ cutoutViews: UIKit.UIView...)
   public static func addOutsideCornerBorders(to view: UIKit.UIView)
