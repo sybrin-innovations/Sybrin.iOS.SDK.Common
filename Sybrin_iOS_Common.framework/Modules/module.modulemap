@@ -1,7 +1,7 @@
 framework module Sybrin_iOS_Common {
   umbrella header "Sybrin_iOS_Common.h"
-
   export *
+
   module * { export * }
 }
 

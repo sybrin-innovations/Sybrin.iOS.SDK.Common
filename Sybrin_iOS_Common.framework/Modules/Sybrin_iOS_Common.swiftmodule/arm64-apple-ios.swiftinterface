@@ -1,18 +1,21 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)
+// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
 // swift-module-flags: -target arm64-apple-ios12.4 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Sybrin_iOS_Common
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVFoundation
 import CommonCrypto
+import DeveloperToolsSupport
 import Foundation
 import Network
 import Photos
 import Swift
+import SwiftUI
 @_exported import Sybrin_iOS_Common
 import SystemConfiguration
 import UIKit
 import _Concurrency
 import _StringProcessing
+import _SwiftConcurrencyShims
 extension UIKit.UIView {
   @_Concurrency.MainActor(unsafe) public func showToast(message: Swift.String, with options: Sybrin_iOS_Common.ToastOptions = ToastOptions())
   @_Concurrency.MainActor(unsafe) public func subview(where searchPredicate: (UIKit.UIView) -> Swift.Bool) -> UIKit.UIView?
@@ -37,10 +40,10 @@ public enum CameraOutputType {
     get
     set
   }
-  weak public static var delegate: Sybrin_iOS_Common.CommonUIDelegate?
+  weak public static var delegate: (any Sybrin_iOS_Common.CommonUIDelegate)?
   public static func addOverlay(to view: UIKit.UIView)
   public static func removeOverlay()
-  public static func loadingAnim(to view: UIKit.UIView?)
+  public static func loadingAnim(to view: UIKit.UIView?, messageChanged: Swift.Bool = false)
   public static func loadingAnimStop()
   public static func addRectCutouts(addBorder: Swift.Bool = false, withRoundedCorners: (width: CoreFoundation.CGFloat, height: CoreFoundation.CGFloat)? = nil, _ cutoutViews: UIKit.UIView...)
   public static func addOvalCutouts(addBorder: Swift.Bool = false, _ cutoutViews: UIKit.UIView...)
@@ -183,9 +186,11 @@ public struct Environment : Swift.Codable {
   public var licenseAuthorizeURL: Swift.String?
   public var licenseValidateURL: Swift.String?
   public var licenseUpdateCountURL: Swift.String?
+  public var orchestrationURL: Swift.String?
+  public var orchestrationAPIKey: Swift.String?
   public init()
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 public protocol CommonUIDelegate : AnyObject {
   func handleBackButtonPressed()
@@ -247,7 +252,7 @@ extension Sybrin_iOS_Common.BigInt {
   public func isPrime(rounds: Swift.Int = 10) -> Swift.Bool
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class CameraHandler : ObjectiveC.NSObject, AVFoundation.AVCaptureVideoDataOutputSampleBufferDelegate, AVFoundation.AVCapturePhotoCaptureDelegate {
-  final weak public var delegate: Sybrin_iOS_Common.CameraDelegate?
+  final weak public var delegate: (any Sybrin_iOS_Common.CameraDelegate)?
   final public var cameraPosition: AVFoundation.AVCaptureDevice.Position {
     get
     set
@@ -265,7 +270,7 @@ extension Sybrin_iOS_Common.BigInt {
   @objc deinit
   final public func cameraTakePicture(_ flashMode: AVFoundation.AVCaptureDevice.FlashMode = .auto)
   @objc final public func captureOutput(_ output: AVFoundation.AVCaptureOutput, didOutput sampleBuffer: CoreMedia.CMSampleBuffer, from connection: AVFoundation.AVCaptureConnection)
-  @objc final public func photoOutput(_ output: AVFoundation.AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVFoundation.AVCapturePhoto, error: Swift.Error?)
+  @objc final public func photoOutput(_ output: AVFoundation.AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVFoundation.AVCapturePhoto, error: (any Swift.Error)?)
   public static func toggleFlashLight() -> Swift.Bool
 }
 final public class LicenseHandler {
@@ -503,7 +508,7 @@ public struct DeveloperSettings {
   public static func disableDeveloperAccess()
 }
 public struct FrameworkConfiguration {
-  public static var configuration: Sybrin_iOS_Common.SybrinCommonConfiguration? {
+  public static var configuration: (any Sybrin_iOS_Common.SybrinCommonConfiguration)? {
     get
     set
   }
@@ -603,7 +608,7 @@ extension Sybrin_iOS_Common.BigInt : Swift.Strideable {
   public func distance(to other: Sybrin_iOS_Common.BigInt) -> Sybrin_iOS_Common.BigInt.Stride
 }
 @_hasMissingDesignatedInitializers final public class GestureHandler {
-  weak public static var delegate: Sybrin_iOS_Common.SwipeGestureDelegate?
+  weak public static var delegate: (any Sybrin_iOS_Common.SwipeGestureDelegate)?
   public static func addSwipeGesture(on view: UIKit.UIView, for direction: UIKit.UISwipeGestureRecognizer.Direction)
   public static func removeSwipeGesture(from view: UIKit.UIView, for direction: UIKit.UISwipeGestureRecognizer.Direction)
   @objc deinit
@@ -704,12 +709,12 @@ extension UIKit.UIViewController {
   @_Concurrency.MainActor(unsafe) public func showToast(message: Swift.String, with options: Sybrin_iOS_Common.ToastOptions = ToastOptions())
 }
 extension Sybrin_iOS_Common.BigInt : Swift.Codable {
-  public init(from decoder: Swift.Decoder) throws
-  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
 }
 extension Sybrin_iOS_Common.BigUInt : Swift.Codable {
-  public init(from decoder: Swift.Decoder) throws
-  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
 }
 public protocol CameraDelegate : AnyObject {
   func capturePhoto(camera: Sybrin_iOS_Common.CameraHandler, image: UIKit.UIImage)
