@@ -6,6 +6,6 @@ framework module Sybrin_iOS_Common {
 }
 
 module Sybrin_iOS_Common.Swift {
-    header "Sybrin_iOS_Common-Swift.h"
-    requires objc
+  header "Sybrin_iOS_Common-Swift.h"
+  requires objc
 }
